@@ -3,3 +3,4 @@ Moderately complex vending machine. Presents users with options, broken down by 
 
 <h4>Collaborators</h4>
 * Kelson Smith (owner)
+* Abel Miranda (collaborator)
