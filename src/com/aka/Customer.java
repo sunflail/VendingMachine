@@ -8,6 +8,7 @@ class Customer {
     private Enum funds; // may or may not be an Enum
 
     // Business methods
+    //TODO: scjbs
     public void makeRequest() {} // might be better as makeSelection()
     public void makePayment() {}
     public void retrieveItem() {}
