@@ -9,6 +9,7 @@ public class MenuTest {
     private Item item1;
     private Item item2;
     private Menu menu1;
+    private Menu menu2;
 
     @Before
     public void setUp() {
@@ -24,7 +25,10 @@ public class MenuTest {
 
     @Test
     public void createMenu_shouldCreateASpecificMenu_whenPassedAnInput() {
-        assertEquals("XYZ", menu1.createItemMenu(item1));
-        assertNotEquals("Tuna", menu1.createItemMenu(item2));
+        menu1.createItemMenu(item1);
+        assertEquals("Drinks", menu1.getCategory());
+        System.out.println("This is printing: " + menu1.createItemMenu(item2));
+        System.out.println(menu1.getCategory());
+        assertEquals("Sandwich", menu1.getCategory());
     }
 }

@@ -6,6 +6,7 @@ class Item {
     private String category; // probably reference an enum
     private double price;
     private boolean inStock = true;
+    private boolean isRetrievable;
 
     public  Item(String name, String category, double price, boolean inStock) {
         this.name = name;
@@ -35,5 +36,13 @@ class Item {
 
     public void setInStock(boolean inStock) {
         this.inStock = inStock;
+    }
+
+    public boolean isRetrievable() {
+        return isRetrievable;
+    }
+
+    public void setRetrievable(boolean retrievable) {
+        isRetrievable = retrievable;
     }
 }
