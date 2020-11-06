@@ -4,20 +4,36 @@ class Item {
     // Instance Variables
     private String name;
     private String category; // probably reference an enum
+    private double price;
+    private boolean inStock = true;
 
-    // Accessors
+    public  Item(String name, String category, double price, boolean inStock) {
+        this.name = name;
+        this.category = category;
+        this.price = price;
+        setInStock(inStock);
+    }
+
+
+    //ACCESSOR METHODS
     // TODO: an item's price should be retrievable
-    public void getPrice() {
-
+    public double getPrice() {
+    return price;
     }
 
-    // TODO: check to see if the item is currently available
-    public void checkAvailability() {
-
+    public String getName() {
+        return name;
     }
 
-    // TODO: if an item is no long available, update its availability to reflect that
-    public void updateAvailability() {
+    public String getCategory() {
+        return category;
+    }
 
+    public boolean isInStock() {
+        return inStock;
+    }
+
+    public void setInStock(boolean inStock) {
+        this.inStock = inStock;
     }
 }
