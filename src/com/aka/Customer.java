@@ -1,22 +1,40 @@
 package com.aka;
 
 class Customer {
-    public static void main(String[] args) {
-        // TODO: Instantiate Customer and call to VendingMachine from here
-    }
     // Variables
 
     private Enum funds; // may or may not be an Enum
 
     // Business methods
-    public void makeRequest() {// might be better as makeSelection()
+    public String makeSelection() {// might be better as makeSelection()
         //TODO: Customer calls items to see list of items to choose from - categoryOfItems
+        System.out.println("Simulate user choosing drinks via console input");
+        return "Drinks";
     }
-    public void makePayment() {
+
+    public String makeItemSelection() {
+        System.out.println("User chooses XYZ");
+        return "XYZ";
+    }
+
+    public boolean makeAnotherChoice() {
+        System.out.println("User picks no");
+        return false;
+    }
+
+    public double makePayment(double payment) {
     //TODO: Customer calls Enum Payment to select what form of payment is being used to make payment for items
+        System.out.println("Console input from customer equals the amount requested of " + payment);
+        Payment.setInputAmount(payment);
+        return payment;
     }
-    public void retrieveItem() {
-    //TODO: Customer recieves the item(s) dispensed from the Vending Machine - call to dispensesSomething()
+    public void retrieveItem(Item item) {
+    //TODO: Customer picks up item which changes availability of item
+        item.setInStock(false);
+    }
+
+    public void askForResponse() {
+        System.out.println("simulated user input from console");
     }
 
 }

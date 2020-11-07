@@ -26,7 +26,12 @@ class VendingMachine {
 //            String.matches("1") then since 1 = location 1/list item 1/collection.get(0), item.name = Coke;
 //        }
 //        }
-        this.selectedItem = item;
+        if (item.isInStock()){
+            this.selectedItem = item;
+        }
+        else {
+            System.out.println("This item, " + item.getName() + " is out of stock.");
+        }
     }
 
     public double calculateTotal() { // will need to throw a nullpointerexception if selectedItem is not set
@@ -42,11 +47,12 @@ class VendingMachine {
         return totalCost;
     }
 
-    public boolean dispenseSomething() {
+    public boolean dispenseSomething(boolean payment) {
         // TODO: 11/5/2020 Checks item availability field and delivers item to customer.
         //  - Item availability is checked when calculating total, check for if totalCost == 0.0, then no item to dispense
         //  Also used to check if change is needed, in case of a cash payment, from Payment (calls makeChange()) - medium goal
-        if (totalCost != 0.0) {
+        System.out.println(totalCost);
+        if (totalCost != 0.0 & payment) {
             //give the item to customer - store the item in a variable for retrieval by customer
             selectedItem.setRetrievable(true);
         }
@@ -56,13 +62,7 @@ class VendingMachine {
         return selectedItem.isRetrievable();
     }
 
-    public void showMenu(Menu menuIn) {
-        // TODO: 11/5/2020 Used to show any menu needed to the customer, including items, categories, total requested  
-        //  payment, balance owed/due, an item dispensed message, a thank you message, asking for anything else
-        // Create menu and display (using prompter to console/scanner)
-        System.out.println(menuIn.getCategory());
-        
-    }
+
 
     public void requestOfCustomer() {
         // TODO: 11/5/2020 Called if VendingMachine needs to ask the customer for Money, ask for anything else 
