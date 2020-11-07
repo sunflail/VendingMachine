@@ -1,16 +1,19 @@
 package com.aka;
 
-class Item {
+public class Item extends Menu {
     // Instance Variables
     private String name;
-    private String category; // probably reference an enum
+    //private String category; // probably reference an enum
     private double price;
     private boolean inStock = true;
     private boolean isRetrievable;
+    private String itemId;
 
-    public  Item(String name, String category, double price, boolean inStock) {
+    public Item(String itemId, String name, String category, double price, boolean inStock) {
+        super(category);
+        this.itemId = itemId;
         this.name = name;
-        this.category = category;
+        //this.category = category;
         this.price = price;
         setInStock(inStock);
     }
@@ -26,8 +29,12 @@ class Item {
         return name;
     }
 
-    public String getCategory() {
-        return category;
+//    public String getCategory() {
+//        return category;
+//    }
+
+    public String getItemId() {
+        return itemId;
     }
 
     public boolean isInStock() {

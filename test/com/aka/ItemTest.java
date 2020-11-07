@@ -8,7 +8,8 @@ public class ItemTest {
 
     @Test
     public void testConstructor() {
-        Item item1 = new Item("XYZ", "Drinks", 2.99, true);
+        Menu menu1 = new Menu("Drinks");
+        Item item1 = new Item("1", "XYZ", "Drinks", 2.99, true);
 
         assertEquals("XYZ", item1.getName());
         assertEquals("Drinks", item1.getCategory());

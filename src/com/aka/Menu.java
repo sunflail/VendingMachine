@@ -1,13 +1,20 @@
 package com.aka;
 
 
+import java.util.List;
+
 class Menu {
     private String category;
+    private String categoryId;
+
+    public Menu(String categoryId, String category) {
+        this.categoryId = categoryId;
+        this.category = category;
+    }
 
     public Menu(String category) {
         this.category = category;
     }
-
 
 
     /*TODO:
@@ -47,9 +54,10 @@ class Menu {
 
     }
 
-    public static void showCategoryMenu(Menu menuIn) {
-        System.out.println(menuIn.getCategory());
-
+    public static void showCategoryMenu(List<Menu> menuIn) {
+        for (Menu menu : menuIn) {
+            System.out.println(menu.getCategoryId() + " - " + menu.getCategory());
+        }
     }
 
     public static void showItemMenu(String input, Item item) {
@@ -85,5 +93,9 @@ class Menu {
 
     public String getCategory() {
         return category;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
     }
 }

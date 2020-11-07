@@ -12,8 +12,8 @@ public class PaymentTest {
 
     @Before
     public void setUp() {
-        item1 = new Item("XYZ", "Drinks", 2.99, true);
-        item2 = new Item("Tuna", "Sandwich", 1.50, true);
+        item1 = new Item("1", "XYZ", "Drinks", 2.99, true);
+        item2 = new Item("1", "Tuna", "Sandwich", 1.50, true);
     }
 
     @Test
