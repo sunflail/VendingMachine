@@ -16,25 +16,25 @@ public class PaymentTest {
         item2 = new Item("1", "Tuna", "Sandwich", 1.50, true);
     }
 
-    @Test
-    public void verifyifBalanceisEqual() {
-        Payment.setInputAmount(item1.getPrice());
-        assertEquals(true, Payment.verifyBalance(item1));
-    }
-
-    @Test
-    public void verifyifBalanceisLessthanPriceOfItem() {
-        Payment.setInputAmount(1.00);
-        assertFalse(Payment.verifyBalance(item2));
-
-
-    }
-    @Test
-    public void verifyifBalanceisGreaterthanPriceOfItem() {
-        Payment.setInputAmount(3.50);
-        assertTrue(Payment.verifyBalance(item1));
-
-    }
+//    @Test
+//    public void verifyifBalanceisEqual() {
+//        Payment.setInputAmount(item1.getPrice());
+//        assertEquals(true, Payment.verifyBalance(item1));
+//    }
+//
+//    @Test
+//    public void verifyifBalanceisLessthanPriceOfItem() {
+//        Payment.setInputAmount(1.00);
+//        assertFalse(Payment.verifyBalance(item2));
+//
+//
+//    }
+//    @Test
+//    public void verifyifBalanceisGreaterthanPriceOfItem() {
+//        Payment.setInputAmount(3.50);
+//        assertTrue(Payment.verifyBalance(item1));
+//
+//    }
 /*
     @Test
     public void testMakeChange() {

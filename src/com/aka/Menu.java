@@ -60,9 +60,12 @@ class Menu {
         }
     }
 
-    public static void showItemMenu(String input, Item item) {
-        if (input.equals(item.getCategory())) {
-            System.out.println("Available " + item.getCategory() + " are " + item.getName() + " for $" + item.getPrice());
+    //(String inputm items)
+    public static void showItemMenu(String input, List<Item> items) {
+        for(Item item: items) {
+            if (input.equals(item.getCategory())) {
+                System.out.println("Available " + item.getCategory() + " are " + item.getName() + " for $" + item.getPrice());
+            }
         }
     }
 
@@ -70,12 +73,14 @@ class Menu {
         System.out.println("Please deposit money." + cost);
     }
 
-    public static void showItemRetrievable(Item item) {
-        if (item.isRetrievable()){
-            System.out.println(item.getName() + " is ready for pickup.");
-        }
-        else {
-            System.out.println(item.getName() + " is not ready, there was a problem.");
+    public static void showItemRetrievable(List<Item> items) {
+        for(Item item: items) {
+            if (item.isRetrievable()){
+                System.out.println(item.getName() + " is ready for pickup.");
+            }
+//            else {
+//                System.out.println(item.getName() + " is not ready, there was a problem.");
+//            }
         }
     }
 

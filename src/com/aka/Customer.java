@@ -20,11 +20,13 @@ class Customer {
         return result;
     }
 
-    public Item makeItemSelection(String input, Item item) {
-        if (input.equals(item.getItemId())){
-            foundItem = item;
+    public Item makeItemSelection(String input, List<Item> items) {
+        for(Item item: items) {
+            if (input.equals(item.getItemId())){
+                foundItem = item;
+            }
         }
-        System.out.println("User chooses " + item.getItemId() + " which is " + item.getName());
+        System.out.println("User chooses " + foundItem.getItemId() + " which is " + foundItem.getName());
         return foundItem;
     }
 
@@ -43,9 +45,15 @@ class Customer {
         Payment.setInputAmount(payment);
         return payment;
     }
-    public void retrieveItem(Item item) {
+    public void retrieveItem(List<Item> items) {
     //TODO: Customer picks up item which changes availability of item
-        item.setInStock(false);
+        for(Item item: items) {
+            if(item.isRetrievable()){
+                item.setInStock(false);
+                item.setRetrievable(false);
+            }
+
+        }
     }
 
     public String consoleInput(String input) {
