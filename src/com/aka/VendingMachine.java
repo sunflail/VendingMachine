@@ -2,7 +2,6 @@ package com.aka;
 
 class VendingMachine {
     // Variables
-    private Menu menu1; // will probably be a collection, maybe advanced enum
     private double customerPayment;
     private Item selectedItem;
     private double totalCost;
@@ -60,11 +59,4 @@ class VendingMachine {
         }
         return selectedItem.isRetrievable();
     }
-
-
-
-    public void requestOfCustomer() {
-        // TODO: 11/5/2020 Called if VendingMachine needs to ask the customer for Money, ask for anything else 
-    } // needs a name change
-
 }

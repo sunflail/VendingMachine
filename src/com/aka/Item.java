@@ -13,7 +13,6 @@ public class Item extends Menu {
         super(category);
         this.itemId = itemId;
         this.name = name;
-        //this.category = category;
         this.price = price;
         setInStock(inStock);
     }
@@ -28,10 +27,6 @@ public class Item extends Menu {
     public String getName() {
         return name;
     }
-
-//    public String getCategory() {
-//        return category;
-//    }
 
     public String getItemId() {
         return itemId;

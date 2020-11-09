@@ -40,17 +40,8 @@ class Menu {
         return itemStatement; // currently this returns the NAME of the passed ITEM matching the CATEGORY
     }
 
-    public static void showMenu(Menu menuIn) {
-        // TODO: 11/5/2020 Used to show any menu needed to the customer, including items, categories, total requested
-        //  payment, balance owed/due, an item dispensed message, a thank you message, asking for anything else
-        // Create menu and display (using prompter to console/scanner)
-        System.out.println(menuIn.getCategory());
-
-    }
-
     public static String showStartMenu() {
         return "Welcome to the Vending Machine.\nPlease select from the following categories:\n";
-
     }
 
     public static void showCategoryMenu(List<Menu> menuIn) {
