@@ -67,38 +67,34 @@ public class Client {
 //        Show the initial welcome screen
 //        Could include splash screen/logo
 //        Program asks customer for category selection
+        // TODO: 11/9/2020 Add options to all prompts - A OR Drinks or drinks or a, etc (YES or yes or y)
         do {
-            Menu.showStartMenu();
+            prompt.info(Menu.showStartMenu());
             Menu.showCategoryMenu(categories);
-            customer.consoleInput("A");
+            String categoryChoice = prompt.prompt("Category Selection: ");
 ////        Customer makes a choice
-            customer.makeCategorySelection(customer.consoleInput("A"), categories);
 ////        Program reads customer selection - prompter from console
-//        Program.readSelection()
 ////        Program passes selection to Menu
 ////        Menu shows the item selection based on input
 
-            Menu.showItemMenu(customer.makeCategorySelection("B", categories), items);
+            Menu.showItemMenu(customer.makeCategorySelection(categoryChoice, categories), items);
 
-            //Menu.showItemMenu(customer.makeCategorySelection("A", categories), item1); // includes prices
 ////        Program asks customer for item selection
-            customer.consoleInput("1");
+            String itemChoice = prompt.prompt("Item Selection: ");
 ////        Customer makes choice
-
-            customer.makeItemSelection("5", items); // takes input from console for hardcode, where does item get passed in from
 ////        VM takes selection and calculates total
-            //vm.findItem(item1);
-            vm.findItem(customer.makeItemSelection("5", items)); // input from console passed to findItem
+            vm.findItem(customer.makeItemSelection(itemChoice, items)); // input from console passed to findItem
 ////        Check availability
-            vm.calculateTotal();
+            //vm.calculateTotal();
 ////        Menu displays total and requests payment
-            Menu.showPaymentMenu(vm.calculateTotal());
+            String customerPayment = prompt.prompt("Please deposit $" + vm.calculateTotal());
+            //Menu.showPaymentMenu(vm.calculateTotal());
 ////        Program asks customer for payment input
-            customer.consoleInput("2.99");
+            //customer.consoleInput("2.99");
 ////        Customer enter payment amount
-            customer.makePayment("2.99");
+            customer.makePayment(customerPayment);
 ////        Payment verifies the payment
-            System.out.println(Payment.verifyBalance(items));
+            //System.out.println(Payment.verifyBalance(items));
 ////        If sufficient -> call vm.dispenseItem()
             vm.dispenseSomething(Payment.verifyBalance(items));
 ////        If insufficient -> show error message and ask for payment amount again
@@ -107,15 +103,12 @@ public class Client {
             Menu.showItemRetrievable(items);
 ////        Customer picks up item
             customer.retrieveItem(items);
-            //System.out.println(item.isInStock());
-            vm.findItem(customer.makeItemSelection("5", items)); // should be a unit test
 //        Vending machine asks if customer wants anything else
-            Menu.showAnythingElse();
-            customer.consoleInput("No");
-
+            //Menu.showAnythingElse();
+            String anythingElseResponse = prompt.prompt("Would you like to purchase another item? (Yes/No)");
 ////        If yes -> back to 2
 ////        If no -> thank and exit
-            run  = customer.makeAnotherChoice("");
+            run  = customer.makeAnotherChoice(anythingElseResponse);
         } while (run);
 
         Menu.showClosingScreen();

@@ -48,9 +48,8 @@ class Menu {
 
     }
 
-    public static void showStartMenu() {
-        System.out.println("Welcome to the Vending Machine.");
-        System.out.println("Please select from the following categories:\n");
+    public static String showStartMenu() {
+        return "Welcome to the Vending Machine.\nPlease select from the following categories:\n";
 
     }
 
@@ -60,11 +59,13 @@ class Menu {
         }
     }
 
-    //(String inputm items)
+    //(String input items)
+    // TODO: 11/9/2020 Add logic to return 'all out of stocjk' is items collection is empty
     public static void showItemMenu(String input, List<Item> items) {
+        System.out.println(input);
         for(Item item: items) {
-            if (input.equals(item.getCategory())) {
-                System.out.println("Available " + item.getCategory() + " are " + item.getName() + " for $" + item.getPrice());
+            if (input.equals(item.getCategory()) & item.isInStock()) {
+                System.out.println(item.getItemId() + " - " + item.getName() + " for $" + item.getPrice());
             }
         }
     }

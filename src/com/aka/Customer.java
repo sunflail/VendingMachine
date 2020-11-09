@@ -16,7 +16,6 @@ class Customer {
                 result = menu.getCategory();
             }
         }
-        System.out.println("Simulate user choosing " + input + " via console input");
         return result;
     }
 
@@ -26,12 +25,11 @@ class Customer {
                 foundItem = item;
             }
         }
-        System.out.println("User chooses " + foundItem.getItemId() + " which is " + foundItem.getName());
+        System.out.println("You choose " + foundItem.getItemId() + " - " + foundItem.getName() + ".");
         return foundItem;
     }
 
     public boolean makeAnotherChoice(String input) {
-        System.out.println("User picks " + input);
         if (input.equals("No")){
             return false;
         }
@@ -41,7 +39,7 @@ class Customer {
     public double makePayment(String input) {
     //TODO: Customer calls Enum Payment to select what form of payment is being used to make payment for items
         double payment = Double.parseDouble(input);
-        System.out.println("Console input from customer equals the amount requested of " + payment);
+        //System.out.println("Console input from customer equals the amount requested of " + payment);
         Payment.setInputAmount(payment);
         return payment;
     }
