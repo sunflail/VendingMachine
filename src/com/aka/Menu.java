@@ -60,13 +60,18 @@ class Menu {
     }
 
     //(String input items)
-    // TODO: 11/9/2020 Add logic to return 'all out of stocjk' is items collection is empty
+    // TODO: 11/9/2020 Add logic to return 'all out of stock' if items collection is empty
     public static void showItemMenu(String input, List<Item> items) {
+        int i = 0;
         System.out.println(input);
         for(Item item: items) {
             if (input.equals(item.getCategory()) & item.isInStock()) {
+                i++;
                 System.out.println(item.getItemId() + " - " + item.getName() + " for $" + item.getPrice());
             }
+        }
+        if (i == 0) {
+            System.out.println("Sorry, currently out of stock");
         }
     }
 
