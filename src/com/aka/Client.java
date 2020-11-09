@@ -1,11 +1,15 @@
 package com.aka;
 
+import com.apps.util.Prompter;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class Client {
     public static void main(String[] args) {
+        Prompter prompt = new Prompter(new Scanner(System.in));
         Customer customer = new Customer();
         VendingMachine vm = new VendingMachine();
         Item item1 = new Item("1","XYZ", "Drinks", 2.99, true);
@@ -104,16 +108,17 @@ public class Client {
 ////        Customer picks up item
             customer.retrieveItem(items);
             //System.out.println(item.isInStock());
-            vm.findItem(customer.makeItemSelection("5", items));
+            vm.findItem(customer.makeItemSelection("5", items)); // should be a unit test
 //        Vending machine asks if customer wants anything else
             Menu.showAnythingElse();
             customer.consoleInput("No");
 
 ////        If yes -> back to 2
 ////        If no -> thank and exit
-            run  = customer.makeAnotherChoice("No");
+            run  = customer.makeAnotherChoice("");
         } while (run);
 
-        Menu.showClosingScreen(); // Program calls exit()
+        Menu.showClosingScreen();
+        System.exit(0);
     }
 }

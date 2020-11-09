@@ -91,7 +91,6 @@ class Menu {
     public static void showClosingScreen() {
         System.out.println("Thank you, have a nice day.");
         // insert code to exit
-        System.exit(0);
     }
 
     // Accessors
