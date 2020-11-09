@@ -32,15 +32,15 @@ public class Client {
         items.add(new Item("4", "Fanta", "Drinks", 1.00, true));
 
         items.add(new Item("5", "Tuna", "Sandwich", 2.99, true));
-        items.add(new Item("6","Chicken ", "Sandwich", 2.99, true ));
+        items.add(new Item("6","Chicken", "Sandwich", 2.99, true ));
         items.add(new Item("7","Club ", "Sandwich", 2.99, true ));
-        items.add(new Item("8","Veggie ", "Sandwich", 2.99, true ));
+        items.add(new Item("8","Veggie", "Sandwich", 2.99, true ));
 
-        items.add(new Item("9","Lays ", "Snacks", 1.99, true ));
-        items.add(new Item("10","Snickers ", "Snacks", 1.99, true ));
-        items.add(new Item("11","Sun Chips ", "Snacks", 1.99, false ));
-        items.add(new Item("12","Kit Kat ", "Snacks", 1.99, true ));
-        items.add(new Item("13","Sun Chips ", "Snacks", 1.99, false ));
+        items.add(new Item("9","Lays", "Snacks", 1.99, true ));
+        items.add(new Item("10","Snickers", "Snacks", 1.99, true ));
+        items.add(new Item("11","Sun Chips", "Snacks", 1.99, false ));
+        items.add(new Item("12","Kit Kat", "Snacks", 1.99, true ));
+        items.add(new Item("13","Sun Chips", "Snacks", 1.99, false ));
 
         //Items of drinks
         Item drinksItem1 = items.get(0);
@@ -77,13 +77,13 @@ public class Client {
 ////        Program passes selection to Menu
 ////        Menu shows the item selection based on input
 
-            Menu.showItemMenu(customer.makeCategorySelection(categoryChoice, categories), items);
+            Menu.showItemMenu(customer.makeCategorySelection(categoryChoice.trim(), categories), items);
 
 ////        Program asks customer for item selection
             String itemChoice = prompt.prompt("Item Selection: ");
 ////        Customer makes choice
 ////        VM takes selection and calculates total
-            vm.findItem(customer.makeItemSelection(itemChoice, items)); // input from console passed to findItem
+            vm.findItem(customer.makeItemSelection(itemChoice.trim(), items)); // input from console passed to findItem
 ////        Check availability
             //vm.calculateTotal();
 ////        Menu displays total and requests payment
@@ -92,7 +92,7 @@ public class Client {
 ////        Program asks customer for payment input
             //customer.consoleInput("2.99");
 ////        Customer enter payment amount
-            customer.makePayment(customerPayment);
+            customer.makePayment(customerPayment.trim());
 ////        Payment verifies the payment
             //System.out.println(Payment.verifyBalance(items));
 ////        If sufficient -> call vm.dispenseItem()
@@ -108,7 +108,7 @@ public class Client {
             String anythingElseResponse = prompt.prompt("Would you like to purchase another item? (Yes/No)");
 ////        If yes -> back to 2
 ////        If no -> thank and exit
-            run  = customer.makeAnotherChoice(anythingElseResponse);
+            run  = customer.makeAnotherChoice(anythingElseResponse.trim());
         } while (run);
 
         Menu.showClosingScreen();

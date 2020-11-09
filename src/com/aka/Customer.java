@@ -12,7 +12,8 @@ class Customer {
     public String makeCategorySelection(String input, List<Menu> menus) {// might be better as makeSelection()
         //TODO: Customer calls items to see list of items to choose from - categoryOfItems
         for (Menu menu : menus) {
-            if (input.equals(menu.getCategoryId())) {
+            if(input.equalsIgnoreCase(menu.getCategoryId()) || input.equalsIgnoreCase(menu.getCategory())) {
+            //if (input.equals(menu.getCategoryId())) {
                 result = menu.getCategory();
             }
         }
@@ -21,7 +22,8 @@ class Customer {
 
     public Item makeItemSelection(String input, List<Item> items) {
         for(Item item: items) {
-            if (input.equals(item.getItemId())){
+            if(input.equalsIgnoreCase(item.getItemId().trim())||input.equalsIgnoreCase(item.getName().trim())) {
+            // if (input.equals(item.getItemId())){
                 foundItem = item;
             }
         }
@@ -30,7 +32,7 @@ class Customer {
     }
 
     public boolean makeAnotherChoice(String input) {
-        if (input.equals("No")){
+        if (input.equalsIgnoreCase("No")){
             return false;
         }
         return true;
