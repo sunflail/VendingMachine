@@ -8,6 +8,7 @@ class Item extends VendingMachine {
     private boolean isRetrievable;
     private String itemId;
 
+
     protected Item(String itemId, String name, String category, double price, boolean inStock) {
         this.category = category;
         this.itemId = itemId;
@@ -47,4 +48,6 @@ class Item extends VendingMachine {
     protected void setRetrievable(boolean retrievable) {
         isRetrievable = retrievable;
     }
+
+
 }

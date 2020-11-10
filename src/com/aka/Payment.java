@@ -17,13 +17,16 @@ enum Payment {
 
     // Add methods
     // TODO: check to see amount presented; if insufficient, prompt for additional payment
-    static boolean verifyBalance(List<Item> items) {
+    static boolean verifyBalance(List<Item> cart) {
         // debit, credit input,
         //cash - it meets the requirement if cash inputted is more than the price of the item
+        System.out.println(cart);
         double amount=0.0;
-        for(Item item: items) {
+        for(Item item: cart) {
 
-            amount+=item.getPrice();
+                amount+=item.getPrice();
+            System.out.println(amount);
+
 //            if(inputAmount>= item.getPrice()) {
 //                //makeChange();
 //             return true;
@@ -34,7 +37,7 @@ enum Payment {
 //            }
         }
         if(inputAmount>=amount) {
-            makeChange();
+            System.out.println(amount);
             return true;
         }
         else {

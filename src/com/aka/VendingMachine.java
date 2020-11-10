@@ -11,6 +11,12 @@ class VendingMachine {
     private Item selectedItem;
     private double totalCost;
 
+    public List<Item> getCart() {
+        return cart;
+    }
+
+    List<Item> cart = new ArrayList<>();
+
     // Constructors
     protected VendingMachine() {
 
@@ -76,6 +82,7 @@ class VendingMachine {
         String msg = "";
         if (item.isInStock()){
             this.selectedItem = item;
+            cart.add(selectedItem);
         }
         else {
             msg = ("This item, " + item.getName() + " is out of stock.");
@@ -96,12 +103,8 @@ class VendingMachine {
     protected double calculateTotal() { // will need to throw a nullpointerexception if selectedItem is not set
         totalCost = 0.0; // need to reinitialize totalCost on every call - will need to move during iteration
         // TODO: 11/5/2020 Takes number of items and their prices and finds the total
-        if (selectedItem.isInStock()) {
-            totalCost += selectedItem.getPrice();
-        }
-        else {
-            // TODO: 11/6/2020 Remove SOUT and replace with either exception or another method call
-            System.out.println("Item is out of stock.");
+        for(Item item: cart) {
+            totalCost += item.getPrice();
         }
         Payment.setTotalCost(totalCost);
         return totalCost;
@@ -119,5 +122,9 @@ class VendingMachine {
             // TODO - throw exception on nothing purchased/ready to retrieve
         }
         return selectedItem.isRetrievable();
+    }
+
+    public Item getSelectedItem() {
+        return selectedItem;
     }
 }
