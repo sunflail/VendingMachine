@@ -28,14 +28,18 @@ public class Controller {
             while(runAgain) {
 
                 prompt.info(menu.showCategoryMenu(vm.getCategories()));
-                String categoryChoice = prompt.prompt("Please select your category (category letter or category name): ");
+                String categoryChoice = prompt.prompt("Please select your category (category letter or category name): ",
+                        "[aA-cC]",
+                        "Invalid response, please choose category letter.");
 ////        Customer makes a choice
 ////        Program reads customer selection - prompter from console
 ////        Program passes selection to Menu
 ////        Menu shows the item selection based on input
                 prompt.info(menu.showItemMenu(selection.makeCategorySelection(categoryChoice.trim(), cat), inStockList));
 ////        Program asks customer for item selection
-                String itemChoice = prompt.prompt("Please select your item (item number or item name): ");
+                String itemChoice = prompt.prompt("Please select your item (item number): " ,
+                        "\\d+",
+                        "Invalid response. Please select the item number." );
 ////        Customer makes choice
 ////        VM takes selection and calculates total
                 prompt.info(vm.findItem(itemChoice.trim(), inStockList)); // input from console passed to findItem

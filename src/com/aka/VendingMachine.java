@@ -88,7 +88,7 @@ class VendingMachine {
             this.selectedItem = item;
             cart.add(selectedItem);
             item.setCurrentlySelected(true);
-            msg = "You choose " + selectedItem.getItemId() + " - " + selectedItem.getName() + ".";
+            msg = "You chose " + selectedItem.getItemId() + " - " + selectedItem.getName() + ".";
         }
         else {
             msg = ("This item, " + item.getName() + " is out of stock.");
