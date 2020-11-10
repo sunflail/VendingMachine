@@ -57,11 +57,11 @@ public class Controller {
             //vm.dispenseSomething(Payment.verifyBalance(vm.getCart()));
 ////        If insufficient -> show error message and ask for payment amount again
 ////        Loop back to 11
-            while(!Payment.verifyBalance(vm.getCart())) {
+            while(!Payment.verifyBalance()) {
                 String depositAdditionalAmount = prompt.prompt("Total due is $" + Payment.getTotalCost() + "\nPlease enter the amount to deposit.");
                 selection.makePayment(depositAdditionalAmount.trim());
             }
-            vm.dispenseSomething(Payment.verifyBalance(vm.getCart()));
+            vm.dispenseSomething(Payment.verifyBalance());
 ////        Menu displays item delivered, please retrieve
             prompt.info(menu.showItemRetrievable(vm.getCart()));
 ////        Customer picks up item

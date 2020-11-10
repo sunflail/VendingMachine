@@ -111,10 +111,11 @@ class VendingMachine {
         //  - Item availability is checked when calculating total, check for if totalCost == 0.0, then no item to dispense
         //  Also used to check if change is needed, in case of a cash payment, from Payment (calls makeChange()) - medium goal
         boolean dispensed = false;
-        if (totalCost != 0.0 & payment) {
+        if (totalCost != 0.0 && payment) {
             for (Item item : cart) {
+
                 //give the item to customer - store the item in a variable for retrieval by customer
-                selectedItem.setRetrievable(true);
+                item.setRetrievable(true);
             }
             dispensed = true;
         }
