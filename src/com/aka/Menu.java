@@ -4,7 +4,6 @@ package com.aka;
 import java.util.List;
 
 class Menu extends VendingMachine {
-    //private String category;
     private String categoryId;
 
     protected Menu(String categoryId, String category) {
@@ -15,30 +14,6 @@ class Menu extends VendingMachine {
     protected Menu(String category) {
         this.category = category;
     }
-
-
-    /*TODO:
-     Maybe we can have category and categoryItems as Collection of String holding values like
-    "Sandwiches", "Drinks", "Chocolates" etc for category and "Coke", "Red Bull", "Hersheys", "Twix" etc for
-    categoryItems
-     */
-    /*
-     * Conditional checks against the instantiated category from the constructor, and if it's not eual then it doesn't change it.
-     * This means that createItemMenu cannot change the category and thereby create a sub menu - it returns the item name if
-     * and only if the category already matches. That's a problem :)
-     */
-//    String createItemMenu(Item item) { // maybe change this to create sub menu
-//        String itemStatement = "";
-//        if (item.getCategory().equals(category)) {
-//            System.out.println(item.getName());
-//            itemStatement = item.getCategory();
-//        }
-//        else {
-//            this.category = item.getCategory();
-//            createItemMenu(item);
-//        }
-//        return itemStatement; // currently this returns the NAME of the passed ITEM matching the CATEGORY
-//    }
 
     protected String showStartMenu() {
         return "Welcome to the Vending Machine.\nPlease select from the following categories:\n";
@@ -54,20 +29,22 @@ class Menu extends VendingMachine {
 
     //(String input items)
     // TODO: 11/9/2020 Add logic to return 'all out of stock' if items collection is empty
-    protected void showItemMenu(String input, List<Item> items) {
+    protected String showItemMenu(String input, List<Item> items) {
         int i = 0;
-        System.out.println(input);
+        String msg = "";
         for(Item item: items) {
-            if (input.equals(item.category) & item.isInStock() & !item.isCurrentlySelected()) {
+            if (input.equals(item.getCategory()) && item.isInStock() && !item.isCurrentlySelected()) {
                 i++;
-                System.out.println(item.getItemId() + " - " + item.getName() + " for $" + item.getPrice());
+                msg += item.getItemId() + " - " + item.getName() + " for $" + item.getPrice() + "\n";
             }
         }
         if (i == 0) {
-            System.out.println("Sorry, currently out of stock");
+            msg = "Sorry, currently out of stock";
         }
+        return msg;
     }
 
+    // Method for future release involving multiple payment methods (Cash, CC, ETC)
     protected void showPaymentMenu(double cost) {
         System.out.println("Please deposit money." + cost);
     }
@@ -82,20 +59,9 @@ class Menu extends VendingMachine {
         return msg;
     }
 
-    protected void showAnythingElse() {
-        System.out.println("Would you like to purchase another item?");
-    }
-
     protected String showClosingScreen() {
         return "Thank you, have a nice day.";
-        // insert code to exit
     }
-
-    // Accessors
-
-//    protected String getCategory() {
-//        return category;
-//    }
 
     protected String getCategoryId() {
         return categoryId;

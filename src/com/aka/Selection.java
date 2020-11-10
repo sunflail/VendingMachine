@@ -2,12 +2,10 @@ package com.aka;
 
 import java.util.List;
 
-class Customer {
+class Selection {
     // Variables
     private String result = "Not found.";
-    private Item foundItem;
 
-    // Business methods
     public String makeCategorySelection(String input, List<Menu> menus) {// might be better as makeSelection()
         //TODO: Customer calls items to see list of items to choose from - categoryOfItems
         for (Menu menu : menus) {
@@ -16,17 +14,6 @@ class Customer {
             }
         }
         return result;
-    }
-
-    public Item makeItemSelection(String input, List<Item> items) {
-        for(Item item: items) {
-            if(input.equalsIgnoreCase(item.getItemId().trim())||input.equalsIgnoreCase(item.getName().trim())) {
-                foundItem = item;
-                item.setCurrentlySelected(true);
-            }
-        }
-        System.out.println("You choose " + foundItem.getItemId() + " - " + foundItem.getName() + ".");
-        return foundItem;
     }
 
     public boolean makeAnotherChoice(String input) {
@@ -45,14 +32,5 @@ class Customer {
         Payment.setInputAmount(payment);
         return payment;
     }
-    public void retrieveItem(List<Item> items) {
-    //DONE: Customer picks up item which changes availability of item
-        for(Item item: items) {
-            if(item.isRetrievable()){
-                // item.setInStock(false);
-                item.setRetrievable(false);
-            }
 
-        }
-    }
 }

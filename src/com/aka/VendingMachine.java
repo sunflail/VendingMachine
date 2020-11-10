@@ -70,30 +70,31 @@ class VendingMachine {
     }
 
     // almost a setter
-    protected String findItem(Item item) {
+    protected String findItem(String input, List<Item> items1) {
         // TODO: 11/5/2020 Checks for an item based on its category and name, and also based on the menu choice  
         //  from the Customer - may need a comparator or an equals method defined
-//
         String msg = "";
+        for(Item item: items1) {
+            if(input.equalsIgnoreCase(item.getItemId().trim())||input.equalsIgnoreCase(item.getName().trim())) {
+                msg = addToCart(item);
+            }
+        }
+        return msg;
+    }
+
+    private String addToCart(Item item) {
+        String msg;
         if (item.isInStock()){
             this.selectedItem = item;
             cart.add(selectedItem);
+            item.setCurrentlySelected(true);
+            msg = "You choose " + selectedItem.getItemId() + " - " + selectedItem.getName() + ".";
         }
         else {
             msg = ("This item, " + item.getName() + " is out of stock.");
         }
         return msg;
     }
-//   THIS METHOD IS FROM CUSTOMER AND SHOULD BE ABLE TO BE COLLAPSED INTO findItem()i
-//    public Item makeItemSelection(String input, List<Item> items) {
-//        for(Item item: items) {
-//            if(input.equalsIgnoreCase(item.getItemId().trim())||input.equalsIgnoreCase(item.getName().trim())) {
-//                foundItem = item;
-//            }
-//        }
-//        System.out.println("You choose " + foundItem.getItemId() + " - " + foundItem.getName() + ".");
-//        return foundItem;
-//    }
 
     protected double calculateTotal() { // will need to throw a nullpointerexception if selectedItem is not set
         totalCost = 0.0; // need to reinitialize totalCost on every call - will need to move during iteration
@@ -121,6 +122,15 @@ class VendingMachine {
             // TODO - throw exception on nothing purchased/ready to retrieve
         }
         return dispensed;
+    }
+
+    public void retrieveItem(List<Item> items) {
+        for(Item item: items) {
+            if(item.isRetrievable()){
+                item.setInStock(false);
+                item.setRetrievable(false);
+            }
+        }
     }
 
     public Item getSelectedItem() {
