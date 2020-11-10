@@ -8,6 +8,7 @@ enum Payment {
     DEBIT_CARD,
     CREDIT_CARD;
     private static double inputAmount;
+    private static double totalInput;
     private static double totalCost;
 
 //    public Payment(List<Item> items, List<Menu> menus) {
@@ -20,28 +21,14 @@ enum Payment {
     static boolean verifyBalance(List<Item> cart) {
         // debit, credit input,
         //cash - it meets the requirement if cash inputted is more than the price of the item
-        System.out.println(cart);
-        double amount=0.0;
-        for(Item item: cart) {
-
-                amount+=item.getPrice();
-            System.out.println(amount);
-
-//            if(inputAmount>= item.getPrice()) {
-//                //makeChange();
-//             return true;
-//            }
-//            else {
-//              item.setRetrievable(false);
-//                System.out.println("itemRetrievable" + item.isRetrievable());
-//            }
-        }
-        if(inputAmount>=amount) {
-            System.out.println(amount);
+        if(inputAmount>=totalCost) {
+            makeChange();
             return true;
         }
         else {
-            System.out.println("Insufficient funds! Please deposit " + (totalCost - inputAmount) );
+            totalInput += inputAmount;
+            setTotalCost(totalCost - totalInput);
+            System.out.println("Insufficient funds! Please deposit " + totalCost );
 
             return false;
         }
@@ -67,5 +54,9 @@ enum Payment {
 
     public static void setTotalCost(double totalCostIn) {
         totalCost = totalCostIn;
+    }
+
+    public static double getTotalCost() {
+        return totalCost;
     }
 }

@@ -58,7 +58,7 @@ class Menu extends VendingMachine {
         int i = 0;
         System.out.println(input);
         for(Item item: items) {
-            if (input.equals(item.category) & item.isInStock()) {
+            if (input.equals(item.category) & item.isInStock() & !item.isCurrentlySelected()) {
                 i++;
                 System.out.println(item.getItemId() + " - " + item.getName() + " for $" + item.getPrice());
             }

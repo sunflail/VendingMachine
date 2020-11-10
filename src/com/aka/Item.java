@@ -6,6 +6,7 @@ class Item extends VendingMachine {
     private double price;
     private boolean inStock = true;
     private boolean isRetrievable;
+    private boolean currentlySelected = false;
     private String itemId;
 
 
@@ -15,6 +16,7 @@ class Item extends VendingMachine {
         this.name = name;
         this.price = price;
         setInStock(inStock);
+        setCurrentlySelected(false);
     }
 
 
@@ -49,5 +51,11 @@ class Item extends VendingMachine {
         isRetrievable = retrievable;
     }
 
+    public boolean isCurrentlySelected() {
+        return currentlySelected;
+    }
 
+    public void setCurrentlySelected(boolean currentlySelected) {
+        this.currentlySelected = currentlySelected;
+    }
 }

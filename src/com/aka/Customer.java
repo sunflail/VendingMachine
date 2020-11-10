@@ -22,6 +22,7 @@ class Customer {
         for(Item item: items) {
             if(input.equalsIgnoreCase(item.getItemId().trim())||input.equalsIgnoreCase(item.getName().trim())) {
                 foundItem = item;
+                item.setCurrentlySelected(true);
             }
         }
         System.out.println("You choose " + foundItem.getItemId() + " - " + foundItem.getName() + ".");
@@ -48,7 +49,7 @@ class Customer {
     //DONE: Customer picks up item which changes availability of item
         for(Item item: items) {
             if(item.isRetrievable()){
-                item.setInStock(false);
+                // item.setInStock(false);
                 item.setRetrievable(false);
             }
 

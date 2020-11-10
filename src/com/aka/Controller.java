@@ -24,8 +24,9 @@ public class Controller {
 //        Program asks customer for category selection
         // DONE: 11/9/2020 Add options to all prompts - A OR Drinks or drinks or a, etc (YES or yes or y)
         do {
-            while(runAgain) {
                 prompt.info(menu.showStartMenu());
+            while(runAgain) {
+
                 prompt.info(menu.showCategoryMenu(vm.getCategories()));
                 String categoryChoice = prompt.prompt("Please select your category (category letter or category name): ");
 ////        Customer makes a choice
@@ -57,14 +58,15 @@ public class Controller {
 ////        If insufficient -> show error message and ask for payment amount again
 ////        Loop back to 11
             while(!Payment.verifyBalance(vm.getCart())) {
-                String depositAdditionalAmount = prompt.prompt("Total due is $" + vm.calculateTotal() + "\nPlease enter the amount to deposit.");
+                String depositAdditionalAmount = prompt.prompt("Total due is $" + Payment.getTotalCost() + "\nPlease enter the amount to deposit.");
                 customer.makePayment(depositAdditionalAmount.trim());
-                vm.dispenseSomething(Payment.verifyBalance(vm.getCart()));
             }
+            vm.dispenseSomething(Payment.verifyBalance(vm.getCart()));
 ////        Menu displays item delivered, please retrieve
             prompt.info(menu.showItemRetrievable(vm.getCart()));
 ////        Customer picks up item
             customer.retrieveItem(vm.getCart());
+            vm.cartClear();
 //        Vending machine asks if customer wants anything else
 
 ////        If yes -> back to 2

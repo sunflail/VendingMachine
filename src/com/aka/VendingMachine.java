@@ -73,12 +73,7 @@ class VendingMachine {
     protected String findItem(Item item) {
         // TODO: 11/5/2020 Checks for an item based on its category and name, and also based on the menu choice  
         //  from the Customer - may need a comparator or an equals method defined
-//        customer.input = "A1";
-//        for (Item item : items) {
-//            String.matches("A") then since A = Drinks, item.category = Drinks;
-//            String.matches("1") then since 1 = location 1/list item 1/collection.get(0), item.name = Coke;
-//        }
-//        }
+//
         String msg = "";
         if (item.isInStock()){
             this.selectedItem = item;
@@ -114,17 +109,25 @@ class VendingMachine {
         // TODO: 11/5/2020 Checks item availability field and delivers item to customer.
         //  - Item availability is checked when calculating total, check for if totalCost == 0.0, then no item to dispense
         //  Also used to check if change is needed, in case of a cash payment, from Payment (calls makeChange()) - medium goal
+        boolean dispensed = false;
         if (totalCost != 0.0 & payment) {
-            //give the item to customer - store the item in a variable for retrieval by customer
-            selectedItem.setRetrievable(true);
+            for (Item item : cart) {
+                //give the item to customer - store the item in a variable for retrieval by customer
+                selectedItem.setRetrievable(true);
+            }
+            dispensed = true;
         }
         else {
             // TODO - throw exception on nothing purchased/ready to retrieve
         }
-        return selectedItem.isRetrievable();
+        return dispensed;
     }
 
     public Item getSelectedItem() {
         return selectedItem;
+    }
+
+    protected void cartClear() {
+        cart.clear();
     }
 }
