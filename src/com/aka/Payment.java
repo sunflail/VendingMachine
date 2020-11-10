@@ -9,6 +9,10 @@ enum Payment {
     CREDIT_CARD;
     private static double inputAmount;
 
+//    public Payment(List<Item> items, List<Menu> menus) {
+//        super(items, menus);
+//    }
+
 
     // Add methods
     // TODO: check to see amount presented; if insufficient, prompt for additional payment

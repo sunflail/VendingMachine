@@ -23,12 +23,12 @@ public class MenuTest {
         assertEquals("Drinks", menu1.getCategory());
     }
 
-    @Test
-    public void createMenu_shouldCreateASpecificMenu_whenPassedAnInput() {
-        menu1.createItemMenu(item1);
-        assertEquals("Drinks", menu1.getCategory());
-        System.out.println("This is printing: " + menu1.createItemMenu(item2));
-        System.out.println(menu1.getCategory());
-        assertEquals("Sandwich", menu1.getCategory());
-    }
+//    @Test
+//    public void createMenu_shouldCreateASpecificMenu_whenPassedAnInput() {
+//        menu1.createItemMenu(item1);
+//        assertEquals("Drinks", menu1.getCategory());
+//        System.out.println("This is printing: " + menu1.createItemMenu(item2));
+//        System.out.println(menu1.getCategory());
+//        assertEquals("Sandwich", menu1.getCategory());
+//    }
 }

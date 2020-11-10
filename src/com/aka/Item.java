@@ -1,16 +1,15 @@
 package com.aka;
 
-public class Item extends Menu {
+class Item extends VendingMachine {
     // Instance Variables
     private String name;
-    //private String category; // probably reference an enum
     private double price;
     private boolean inStock = true;
     private boolean isRetrievable;
     private String itemId;
 
-    public Item(String itemId, String name, String category, double price, boolean inStock) {
-        super(category);
+    protected Item(String itemId, String name, String category, double price, boolean inStock) {
+        this.category = category;
         this.itemId = itemId;
         this.name = name;
         this.price = price;
@@ -20,31 +19,32 @@ public class Item extends Menu {
 
     //ACCESSOR METHODS
     // TODO: an item's price should be retrievable
-    public double getPrice() {
+    protected double getPrice() {
     return price;
     }
 
-    public String getName() {
+    protected String getName() {
         return name;
     }
 
-    public String getItemId() {
+    protected String getItemId() {
         return itemId;
     }
 
-    public boolean isInStock() {
+
+    protected boolean isInStock() {
         return inStock;
     }
 
-    public void setInStock(boolean inStock) {
+    protected void setInStock(boolean inStock) {
         this.inStock = inStock;
     }
 
-    public boolean isRetrievable() {
+    protected boolean isRetrievable() {
         return isRetrievable;
     }
 
-    public void setRetrievable(boolean retrievable) {
+    protected void setRetrievable(boolean retrievable) {
         isRetrievable = retrievable;
     }
 }
