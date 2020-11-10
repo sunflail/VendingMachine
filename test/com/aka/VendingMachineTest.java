@@ -19,8 +19,8 @@ public class VendingMachineTest {
 //        item2 = new Item("Tuna", "Sandwich", 1.50, true);
 //        menu1 = new Menu("A", "Drinks");
 
-        vm1 = new VendingMachine();
-        vm2 = new VendingMachine();
+        //vm1 = new VendingMachine(menus);
+        //vm2 = new VendingMachine(menus);
 
     }
 
@@ -57,10 +57,10 @@ public class VendingMachineTest {
 
     @Test
     public void showItemMenu() {
-        menu1.createItemMenu(item1);
+        //menu1.createItemMenu(item1);
         //vm1.showMenu(menu1);
         //menu2 = new Menu();
-        menu1.createItemMenu(item2);
+        //menu1.createItemMenu(item2);
         System.out.println(menu1.getCategory());
         //vm1.showMenu(menu1);
     }

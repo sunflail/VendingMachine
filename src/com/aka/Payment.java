@@ -10,6 +10,10 @@ enum Payment {
     private static double inputAmount;
     private static double totalCost;
 
+//    public Payment(List<Item> items, List<Menu> menus) {
+//        super(items, menus);
+//    }
+
 
     // Add methods
     // TODO: check to see amount presented; if insufficient, prompt for additional payment
