@@ -43,6 +43,7 @@ class VendingMachine {
             // TODO: 11/6/2020 Remove SOUT and replace with either exception or another method call
             System.out.println("Item is out of stock.");
         }
+        Payment.setTotalCost(totalCost);
         return totalCost;
     }
 

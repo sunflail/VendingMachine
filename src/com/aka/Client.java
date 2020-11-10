@@ -69,6 +69,9 @@ public class Client {
 ////        If insufficient -> show error message and ask for payment amount again
 ////        Loop back to 11
 ////        Menu displays item delivered, please retrieve
+            //Payment.makeChange();
+
+
             Menu.showItemRetrievable(items);
 ////        Customer picks up item
             customer.retrieveItem(items);
