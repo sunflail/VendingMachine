@@ -10,6 +10,7 @@ enum Payment {
     private static double inputAmount;
     private static double totalInput;
     private static double totalCost;
+    private static double change;
 
 //    public Payment(List<Item> items, List<Menu> menus) {
 //        super(items, menus);
@@ -18,7 +19,7 @@ enum Payment {
 
     // Add methods
     // TODO: check to see amount presented; if insufficient, prompt for additional payment
-    static boolean verifyBalance(List<Item> cart) {
+    static boolean verifyBalance() {
         // debit, credit input,
         //cash - it meets the requirement if cash inputted is more than the price of the item
         if(inputAmount>=totalCost) {
@@ -34,14 +35,18 @@ enum Payment {
         }
     }
 
+    public static double getChange() {
+        return change;
+    }
+
     //TODO: compare payment amount to total cost and return the difference - VENDING MACHINE CLASS?
     static double makeChange() {
 
         //double totalCost = 10;
 
-        double change = inputAmount - totalCost;
+        change = inputAmount - totalCost;
     //return inputAmount - totalCost;
-        System.out.println("The change dispensed is " + change);
+       // System.out.println("The change dispensed is " + change);
 
         return change;
     }
