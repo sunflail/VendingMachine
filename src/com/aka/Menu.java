@@ -1,18 +1,17 @@
 package com.aka;
 
-
 import java.util.List;
 
 class Menu extends VendingMachine {
     private String categoryId;
 
-    protected Menu(String categoryId, String category) {
-        this.categoryId = categoryId;
+    protected Menu(String category) {
         this.category = category;
     }
 
-    protected Menu(String category) {
-        this.category = category;
+    protected Menu(String categoryId, String category) {
+        this(category);
+        this.categoryId = categoryId;
     }
 
     protected String showStartMenu() {
@@ -27,8 +26,6 @@ class Menu extends VendingMachine {
         return msg;
     }
 
-    //(String input items)
-    // TODO: 11/9/2020 Add logic to return 'all out of stock' if items collection is empty
     protected String showItemMenu(String input, List<Item> items) {
         int i = 0;
         String msg = "";

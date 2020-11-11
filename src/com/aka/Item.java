@@ -9,7 +9,7 @@ class Item extends VendingMachine {
     private boolean currentlySelected = false;
     private String itemId;
 
-
+    // Constructors
     protected Item(String itemId, String name, String category, double price, boolean inStock) {
         this.category = category;
         this.itemId = itemId;
@@ -19,11 +19,9 @@ class Item extends VendingMachine {
         setCurrentlySelected(false);
     }
 
-
     //ACCESSOR METHODS
-    // TODO: an item's price should be retrievable
     protected double getPrice() {
-    return price;
+        return price;
     }
 
     protected String getName() {
@@ -33,7 +31,6 @@ class Item extends VendingMachine {
     protected String getItemId() {
         return itemId;
     }
-
 
     protected boolean isInStock() {
         return inStock;

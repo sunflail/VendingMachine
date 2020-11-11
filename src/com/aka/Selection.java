@@ -6,7 +6,7 @@ class Selection {
     // Variables
     private String result = "Not found.";
 
-    public String makeCategorySelection(String input, List<Menu> menus) {// might be better as makeSelection()
+    public String makeCategorySelection(String input, List<Menu> menus) {
         //TODO: Customer calls items to see list of items to choose from - categoryOfItems
         for (Menu menu : menus) {
             if(input.equalsIgnoreCase(menu.getCategoryId()) || input.equalsIgnoreCase(menu.getCategory())) {
@@ -27,10 +27,8 @@ class Selection {
     }
 
     public double makePayment(String input) {
-    //TODO: Customer calls Enum Payment to select what form of payment is being used to make payment for items
         double payment = Double.parseDouble(input);
         Payment.setInputAmount(payment);
         return payment;
     }
-
 }
