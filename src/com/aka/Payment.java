@@ -38,6 +38,10 @@ enum Payment {
         inputAmount = inputAmountIn;
     }
 
+    public static double getInputAmount() { // for Unit Testing
+        return inputAmount;
+    }
+
     public static void setTotalCost(double totalCostIn) {
         totalCost = totalCostIn;
     }

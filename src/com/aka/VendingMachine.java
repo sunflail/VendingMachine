@@ -94,6 +94,14 @@ class VendingMachine {
         return categories;
     }
 
+    public Item getSelectedItem() { // for Unit Testing
+        return selectedItem;
+    }
+
+    public double getTotalCost() { // for Unit Testing
+        return totalCost;
+    }
+
     //TODO: Populate list with an external file
     protected void setCategories() {
         categories = new ArrayList<>();
