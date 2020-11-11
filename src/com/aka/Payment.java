@@ -6,7 +6,6 @@ enum Payment {
     DEBIT_CARD,
     CREDIT_CARD;
     private static double inputAmount;
-    private static double totalInput;
     private static double totalCost;
     private static double change;
 
@@ -19,8 +18,7 @@ enum Payment {
             return true;
         }
         else {
-            totalInput += inputAmount;
-            setTotalCost(totalCost - totalInput);
+            setTotalCost(totalCost - inputAmount);
             // TODO: Remove this system out to something for controller to output to view
             System.out.println("Insufficient funds! Please deposit " + totalCost );
             return false;
