@@ -19,12 +19,6 @@ class VendingMachine {
     }
 
     // Business methods
-    protected double takePayment() {
-        // TODO: Will take payment object from customer and store in local variable for VendingMachine
-        customerPayment = 10.0; // hardcoded temporary value to be replaced by customer object
-        return customerPayment;
-    }
-
     protected String findItem(String input, List<Item> items1) {
         String msg = "";
         for(Item item: items1) {
@@ -37,7 +31,7 @@ class VendingMachine {
 
     private String addToCart(Item item) {
         String msg;
-        if (item.isInStock()){
+        if (item.isInStock() && !cart.contains(item)){
             this.selectedItem = item;
             cart.add(selectedItem);
             item.setCurrentlySelected(true);

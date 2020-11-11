@@ -25,11 +25,6 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void takePayment_shouldStorePaymentMethod() {
-        assertEquals(10.0, vm1.takePayment(), .01);
-    }
-
-    @Test
     public void findItem_shouldReturnCorrectItem_byNameAndCategory() {
     }
 
