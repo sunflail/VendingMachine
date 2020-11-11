@@ -25,15 +25,18 @@ public class Controller {
                 String categoryChoice = prompt.prompt("Please select your category (category letter or category name): ",
                         "[aA-cC]",
                         "Invalid response, please choose category letter.");
-                prompt.info(menu.showItemMenu(selection.makeCategorySelection(categoryChoice.trim(), cat), inStockList));
-                String itemChoice = prompt.prompt("Please select your item (item number): " ,
-                        "\\d+",
-                        "Invalid response. Please select the item number." );
-                prompt.info(vm.findItem(itemChoice.trim(), inStockList)); // input from console passed to findItem
-                String anythingElseResponse = prompt.prompt("Would you like to add additional items to your cart? (Yes/No)\n",
-                        "[yY]|[nN]|([y|Y][e|E][s|S])|([n|N][o|O])",
-                        "That is not a valid response.");
-                runAgain = selection.makeAnotherChoice(anythingElseResponse.trim());
+                String responseToCategoryChoice = prompt.info(menu.showItemMenu(selection.makeCategorySelection(categoryChoice.trim(), cat), inStockList));
+                if (!responseToCategoryChoice.equals("Sorry, currently out of stock")) {
+                    String itemChoice = prompt.prompt("Please select your item (item number): ",
+                            "\\d+",
+                            "Invalid response. Please select the item number.");
+                    prompt.info(vm.findItem(itemChoice.trim(), inStockList)); // input from console passed to findItem
+                    vm.setCategories();
+                }
+                    String anythingElseResponse = prompt.prompt("Would you like to add additional items to your cart? (Yes/No)\n",
+                            "[yY]|[nN]|([y|Y][e|E][s|S])|([n|N][o|O])",
+                            "That is not a valid response.");
+                    runAgain = selection.makeAnotherChoice(anythingElseResponse.trim());
             }
             runAgain = true;
             String customerPayment = prompt.prompt("Total due is $" + vm.calculateTotal() + "\nPlease enter the amount to deposit.");

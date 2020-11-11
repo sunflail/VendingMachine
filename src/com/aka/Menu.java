@@ -21,7 +21,7 @@ class Menu extends VendingMachine {
     protected String showCategoryMenu(List<Menu> menuIn) {
         String msg = "";
         for (Menu menu : menuIn) {
-            msg += (menu.getCategoryId() + " - " + menu.getCategory() + "\n");
+                msg += (menu.getCategoryId() + " - " + menu.getCategory() + "\n");
         }
         return msg;
     }
@@ -40,6 +40,7 @@ class Menu extends VendingMachine {
         }
         return msg;
     }
+
 
     // Method for future release involving multiple payment methods (Cash, CC, ETC)
     protected void showPaymentMenu(double cost) {

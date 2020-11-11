@@ -7,7 +7,6 @@ class VendingMachine {
     private List<Item> items;
     private List<Menu> categories;
     protected String category;
-    private double customerPayment;
     private Item selectedItem;
     private double totalCost;
 
