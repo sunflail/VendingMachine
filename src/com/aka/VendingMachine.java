@@ -48,7 +48,7 @@ class VendingMachine {
             calculatedTotal += item.getPrice();
         }
         Payment.setTotalCost(getCalculatedTotal());
-        return calculatedTotal;
+        return Math.round(calculatedTotal*100d)/100d;
     }
 
     protected boolean dispenseSomething(boolean payment) {
