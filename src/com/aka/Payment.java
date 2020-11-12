@@ -14,6 +14,7 @@ enum Payment {
     public static boolean verifyBalance() {
         // debit, credit input,
         //cash - it meets the requirement if cash inputted is more than the price of the item
+
         if(getInputAmount()>=getTotalCost()) {
             makeChange();
             return true;
@@ -40,7 +41,12 @@ enum Payment {
     }
 
     public static void setInputAmount(double inputAmountIn) {
-        inputAmount = Math.round(inputAmountIn*100d)/100d;
+        if (inputAmountIn >= 0) {
+            inputAmount = Math.round(inputAmountIn * 100d) / 100d;
+        }
+        else {
+            inputAmount = 0;
+        }
     }
 
     public static double getInputAmount() { // for Unit Testing
