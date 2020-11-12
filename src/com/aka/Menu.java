@@ -48,7 +48,7 @@ class Menu extends VendingMachine {
     }
 
     protected String showItemRetrievable(List<Item> items) {
-        String msg = "The amount dispensed is " + Payment.getChange() + "\n";
+        String msg = "Remember to grab your $" + Payment.getChange() + " from the change dispenser!\n";
         for(Item item: items) {
             if (item.isRetrievable()){
                 msg += (item.getName() + " is ready for pickup." + "\n");
