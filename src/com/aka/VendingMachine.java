@@ -8,7 +8,7 @@ class VendingMachine {
     private List<Menu> categories;
     protected String category;
     private Item selectedItem;
-    private double totalCost;
+    private double calculatedTotal;
 
     List<Item> cart = new ArrayList<>();
 
@@ -32,9 +32,9 @@ class VendingMachine {
         String msg;
         if (item.isInStock() && !cart.contains(item)){
             this.selectedItem = item;
-            cart.add(selectedItem);
+            cart.add(getSelectedItem());
             item.setCurrentlySelected(true);
-            msg = "You chose " + selectedItem.getItemId() + " - " + selectedItem.getName() + ".";
+            msg = "You chose " + getSelectedItem().getItemId() + " - " + getSelectedItem().getName() + ".";
         }
         else {
             msg = ("This item, " + item.getName() + " is out of stock.");
@@ -43,18 +43,18 @@ class VendingMachine {
     }
 
     protected double calculateTotal() {
-        totalCost = 0.0; // need to reinitialize totalCost on every call - will need to move during iteration
+        calculatedTotal = 0.0; // need to reinitialize totalCost on every call - will need to move during iteration
         for(Item item: cart) {
-            totalCost += item.getPrice();
+            calculatedTotal += item.getPrice();
         }
-        Payment.setTotalCost(totalCost);
-        return totalCost;
+        Payment.setTotalCost(getCalculatedTotal());
+        return calculatedTotal;
     }
 
     protected boolean dispenseSomething(boolean payment) {
         boolean dispensed = false;
-        if (totalCost != 0.0 && payment) {
-            for (Item item : cart) {
+        if (getCalculatedTotal() != 0.0 && payment) {
+            for (Item item : getCart()) {
                 item.setRetrievable(true);
             }
             dispensed = true;
@@ -94,12 +94,12 @@ class VendingMachine {
         return categories;
     }
 
-    public Item getSelectedItem() { // for Unit Testing
+    public Item getSelectedItem() {
         return selectedItem;
     }
 
-    public double getTotalCost() { // for Unit Testing
-        return totalCost;
+    public double getCalculatedTotal() {
+        return calculatedTotal;
     }
 
     //TODO: Populate list with an external file

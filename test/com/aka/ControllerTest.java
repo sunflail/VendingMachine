@@ -1,7 +1,6 @@
 package com.aka;
 
 import com.apps.util.Prompter;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
@@ -37,7 +36,7 @@ public class ControllerTest {
             while(runAgain) {
                 String start = prompt.info(menu.showCategoryMenu(vm.getCategories()));
                 assertEquals("A - Drinks\nB - Sandwich\nC - Snacks\n", start);
-                String categoryChoice = prompt.prompt("Please select your category (category letter or category name): ",
+                String categoryChoice = prompt.prompt("Please select your category (category letter): ",
                         "[aA-cC]",
                         "Invalid response, please choose category letter.");
                 assertEquals("a", categoryChoice);
@@ -58,11 +57,12 @@ public class ControllerTest {
             }
             runAgain = true;
             String customerPayment = prompt.prompt("Total due is $" + vm.calculateTotal() + "\nPlease enter the amount to deposit.");
-            assertEquals(1.0, vm.getTotalCost(), .01);
+            assertEquals(1.0, vm.getCalculatedTotal(), .01);
             assertEquals(1.0, Payment.getTotalCost(), .01);
             selection.makePayment(customerPayment.trim());
             assertEquals(1.0, Payment.getInputAmount(), .01);
             while(!Payment.verifyBalance()) {
+                prompt.info(Payment.getInsufficientMsg());
                 String depositAdditionalAmount = prompt.prompt("Total due is $" + Payment.getTotalCost() + "\nPlease enter the amount to deposit.");
                 selection.makePayment(depositAdditionalAmount.trim());
             }

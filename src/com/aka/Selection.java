@@ -27,7 +27,7 @@ class Selection {
     }
 
     public double makePayment(String input) {
-        double payment = Double.parseDouble(input);
+        double payment = Math.round(Double.parseDouble(input)*100d)/100d;
         Payment.setInputAmount(payment);
         return payment;
     }

@@ -22,7 +22,7 @@ public class Controller {
                 prompt.info(menu.showStartMenu());
             while(runAgain) {
                 prompt.info(menu.showCategoryMenu(vm.getCategories()));
-                String categoryChoice = prompt.prompt("Please select your category (category letter or category name): ",
+                String categoryChoice = prompt.prompt("Please select your category (category letter): ",
                         "[aA-cC]",
                         "Invalid response, please choose category letter.");
                 String responseToCategoryChoice = prompt.info(menu.showItemMenu(selection.makeCategorySelection(categoryChoice.trim(), cat), inStockList));
@@ -42,6 +42,7 @@ public class Controller {
             String customerPayment = prompt.prompt("Total due is $" + vm.calculateTotal() + "\nPlease enter the amount to deposit.");
             selection.makePayment(customerPayment.trim());
             while(!Payment.verifyBalance()) {
+                prompt.info(Payment.getInsufficientMsg());
                 String depositAdditionalAmount = prompt.prompt("Total due is $" + Payment.getTotalCost() + "\nPlease enter the amount to deposit.");
                 selection.makePayment(depositAdditionalAmount.trim());
             }
